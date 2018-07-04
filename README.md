@@ -44,7 +44,7 @@ It must follow the following format(defined by corresponding Scheme file):
 ...
 <Value k.1> <Value k.2> <Value k.3> <...> <Value k.n>
 ```
-
+NOTE: The program will catch if the Data file is not consistent with the Scheme file. The program will assume the Scheme file is correct.
 ### Run
 ```
     java DTLearn <Scheme file> <Data file>
