@@ -45,7 +45,74 @@ It must follow the following format(defined by corresponding Scheme file):
 <Value k.1> <Value k.2> <Value k.3> <...> <Value k.n>
 ```
 NOTE: The program will catch if the Data file is not consistent with the Scheme file. The program will assume the Scheme file is correct.
+
 ### Run
 ```
     java DTLearn <Scheme file> <Data file>
+```
+
+## Example Usage
+```
+\decision-learning-tree> javac DTLearn.java
+\decision-learning-tree> java DTLearn assets/Loan_sche.txt assets/Loan.txt
+
+Learning starts:
+   Test income: gain = 0.9663236712849368
+   Test collateral: gain = 0.20604950908542197
+   Test debt: gain = 0.06289889437401786
+   Test creditHis: gain = 0.26565428452375395
+             Select attribute income
+   Test collateral: gain = 0.0
+   Test debt: gain = 0.31127812445913283
+   Test creditHis: gain = 0.5
+             Select attribute creditHis
+   Test collateral: gain = 0.0
+   Test debt: gain = 1.0
+             Select attribute debt
+   Test collateral: gain = 0.19087450462110933
+             Select attribute collateral
+
+Decision Tree (11 nodes):
+income
+|
+|
+|
+o--->$35K-->  collateral
+|             |
+|             |
+|             |
+|             o---NONE-->  LOW
+|             |
+|             |
+|             |
+|             o---ADEQUATE-->  LOW
+|
+|
+|
+o---$15-35K-->  creditHis
+|             |
+|             |
+|             |
+|             o---UNKNOWN-->  debt
+|                         |
+|                         |
+|                         |
+|                         o---LOW-->  MODERATE
+|                         |
+|                         |
+|                         |
+|                         o---HIGH-->  HIGH
+|             |
+|             |
+|             |
+|             o---GOOD-->  MODERATE
+|             |
+|             |
+|             |
+|             o---BAD-->  HIGH
+|
+|
+|
+o---<$15K-->  HIGH
+
 ```
